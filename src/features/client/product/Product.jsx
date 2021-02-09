@@ -21,32 +21,20 @@ const Product = props => {
                                         <>
                                             <div className='price orignal-price line-through'>
                                                 <span>$</span>
-                                                <span>{price}</span>
+                                                <span>{price.toLocaleString()}</span>
                                             </div>
                                             <div className='price sale-price'>
                                                 <span>$</span>
-                                                <span>{salePrice}</span>
+                                                <span>{salePrice.toLocaleString()}</span>
                                             </div>
                                         </>
                                     ) : (
                                         <div className='price orignal-price'>
                                             <span>$</span>
-                                            <span>{price}</span>
+                                            <span>{price.toLocaleString()}</span>
                                         </div>
                                     )
                             }
-                            {/* <div className='price cur-price'>
-                                <span>$</span>
-                                <span>{price}</span>
-                            </div>
-                            <div className='price orignal-price'>
-                                <span>$</span>
-                                <span>{price}</span>
-                            </div>
-                            <div className='price sale-price'>
-                                <span>$</span>
-                                <span>{salePrice}</span>
-                            </div> */}
                         </div>
                     </div>
                     <div className='product-cart'>

@@ -1,0 +1,67 @@
+.account {
+    margin-top: 40px;
+}
+
+.account-profile .avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+}
+
+.account-profile .avatar img {
+    border: solid 3px var(--theme-color);
+    max-width: 128px;
+    max-height: 128px;
+    border-radius: 50%;
+}
+
+.account-profile .avatar .logout {
+    padding: 20px;
+}
+
+.account-profile .avatar .logout button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.account-profile .avatar .logout button i {
+    font-size: 20px;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.account-profile .avatar .logout button i:hover {
+    color: var(--hover-color);
+    font-size: 22px;
+}
+
+.account-profile .profile-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-profile .profile-detail .profile-detail-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.account-profile .profile-detail .profile-detail-item i {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.account-profile .profile-detail .profile-detail-item p {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.account-profile .profile-detail .profile-detail-item:hover {
+    color: var(--hover-color);
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}

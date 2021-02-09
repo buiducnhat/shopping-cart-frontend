@@ -1,0 +1,45 @@
+.login{
+    padding-top: 50px;
+}
+
+.title{
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+#login-form{
+    width: 100%;
+    margin-top: 40px;
+}
+
+#login-form input{
+    width: 100%;
+    padding: 2px 5px;
+    margin-bottom: 15px;
+    line-height: 30px;
+    font-size: 20px;
+    border: 1px solid rgba(0,0,0,0.25);
+}
+
+#login-form #submit-btn{
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    background: var(--theme-color);
+}
+
+#login-form #submit-btn:hover{
+    background: var(--hover-color);
+}
+
+#login-form .login-status{
+    font-size: 18px;
+    color: red;
+    padding: 10px 0;
+}

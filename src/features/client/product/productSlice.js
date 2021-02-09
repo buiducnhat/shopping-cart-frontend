@@ -4,14 +4,13 @@ import axios from 'axios'
 export const fetchListProducts = createAsyncThunk('products/fetchList', (params) => {
     return new Promise(async (resolve, reject) => {
         try {
-            // const serverUrl = process.env.SERVER_URL;
-            const serverUrl = `http://localhost:1234`;
+            const serverUrl = process.env.REACT_APP_SERVER_URL;
             let {pageNumber, sortType} = params;
 
             let url = `${serverUrl}/products/?page=${pageNumber}&sort=${sortType}`;
 
             let result = await axios.get(url);
-            console.log(result.data);
+
             return resolve(result.data);
         } catch (error) {
             return reject(error);

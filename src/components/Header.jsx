@@ -1,8 +1,13 @@
 import React, {useEffect} from 'react';
-// import useScript from '../app/hooks/useScript';
+import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
+import listRouters from '../app/listRouters';
 import './Header.css';
 
 const Header = (props) => {
+    const totalCartCost = useSelector(state => state.cartSlice.items?.total);
+    // const userEmail = useSelector(state => state.authenticationSlice.userData?.email);
+
     const script = () => {
         const body = document.body;
         const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
@@ -41,20 +46,20 @@ const Header = (props) => {
                             <ul className='top-header-bar'>
                                 <li className='top-email'>
                                     <i className='far fa-envelope'></i>
-                                    flyass@gmail.com
+                                    gerpandev@gmail.com
                                 </li>
                                 <li className='top-cart'>
-                                    <a href='/carts'>
+                                    <Link to={{pathname: listRouters.cart}}>
                                         <i className='fa fa-shopping-cart'></i>
                                         My Cart - $
-                                        <span className='price'>0</span>
-                                    </a>
+                                        <span className='price'>{` ${totalCartCost || 0}`}</span>
+                                    </Link>
                                 </li>
                                 <li className='top-account'>
-                                    <a href='/users'>
+                                    <Link to={{pathname: listRouters.account}}>
                                         <i className='fas fa-user'></i>
-                                    Account
-                                    </a>
+                                        Account
+                                    </Link>
                                 </li>
                                 <li className='top-search'>
                                     <form role='search' id='top-search-form' action='/' method='get'>
@@ -74,10 +79,9 @@ const Header = (props) => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-4 logo-header'>
-                            <a href='/'>
-                                <img width='165' height='70'
-                                    src='https://demo.colorlib.com/tyche/wp-content/uploads/sites/64/2017/06/logo.png' alt='' />
-                            </a>
+                            <Link to={{pathname: listRouters.home}}>
+                                <img src='https://i.imgur.com/wI9k3di.png' width='auto' height='100' alt='' />
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -87,16 +91,16 @@ const Header = (props) => {
                             <div className='col-md-12'>
                                 <ul id='desktop-menu' className='desktop-menu'>
                                     <li className='desktop-menu-item active'>
-                                        <a href='/'>Home</a>
+                                        <Link to={{pathname: listRouters.home}}>Home</Link>
                                     </li>
                                     <li className='desktop-menu-item'>
-                                        <a href='/products'>Shop</a>
+                                        <Link to={{pathname: listRouters.product}}>Shop</Link>
                                     </li>
                                     <li className='desktop-menu-item'>
-                                        <a href='/'>Blog</a>
+                                        <Link to={{pathname: listRouters.home}}>Blog</Link>
                                     </li>
                                     <li className='desktop-menu-item'>
-                                        <a href='/'>Contact</a>
+                                        <Link to={{pathname: listRouters.home}}>Contact</Link>
                                     </li>
                                 </ul>
                                 <button id='mobile-menu-trigger' className='mobile-menu-trigger' style={{display: 'none'}}>
@@ -104,16 +108,16 @@ const Header = (props) => {
                                 </button>
                                 <ul id='mobile-menu' className='mobile-menu' style={{display: 'none'}}>
                                     <li className='mobile-menu-item'>
-                                        <a href='/'>Home</a>
+                                        <Link to={{pathname: listRouters.home}}>Home</Link>
                                     </li>
                                     <li className='mobile-menu-item'>
-                                        <a href='/products'>Shop</a>
+                                        <Link to={{pathname: listRouters.product}}>Shop</Link>
                                     </li>
                                     <li className='mobile-menu-item'>
-                                        <a href='/'>Blog</a>
+                                        <Link to={{pathname: listRouters.home}}>Blog</Link>
                                     </li>
                                     <li className='mobile-menu-item'>
-                                        <a href='/'>Contact</a>
+                                        <Link to={{pathname: listRouters.home}}>Contact</Link>
                                     </li>
                                 </ul>
                             </div>

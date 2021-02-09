@@ -1,0 +1,79 @@
+.product-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(100, 100, 100, 0.2);
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-detail .product-name h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--theme-color);
+}
+
+.product-detail .price span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.product-detail button {
+    cursor: pointer;
+    outline: none;
+    border: 1px solid rgb(100, 100, 100, 0.2);
+    background: #fff;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.product-detail button:focus {
+    outline: none;
+}
+
+.quantity {
+    display: flex;
+    flex-direction: row;
+}
+
+.quantity input {
+    width: 35px;
+    height: 25px;
+    outline: none;
+    border: 1px solid rgb(100, 100, 100, 0.2);
+    background-color: rgb(100, 100, 100, 0.05);
+    ;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.remove-btn button {
+    width: auto;
+    height: auto;
+    border: none;
+}
+
+.remove-btn button i {
+    font-size: 1rem;
+}
+
+.sub-total {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+.sub-total span {
+    font-size: 1.25rem;
+    font-weight: 700;
+}

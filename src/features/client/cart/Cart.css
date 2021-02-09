@@ -1,0 +1,23 @@
+.cart {
+    margin-top: 50px;
+}
+
+.cart-save {
+    position: relative;
+    top: 5px;
+    right: 0;
+}
+
+.cart-save button {
+    padding: 5px 10px;
+    background: var(--theme-color);
+    color: #fff;
+    border: none;
+    box-shadow: 1px 1px 5px 0px rgba(100, 100, 100);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.cart-save button:hover{
+    background: var(--hover-color);
+}
