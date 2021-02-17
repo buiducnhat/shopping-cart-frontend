@@ -5,8 +5,7 @@ import listRouters from '../app/listRouters';
 import './Header.css';
 
 const Header = (props) => {
-    const totalCartCost = useSelector(state => state.cartSlice.items?.total);
-    // const userEmail = useSelector(state => state.authenticationSlice.userData?.email);
+    const totalCartCost = useSelector(state => state.cartSlice.total);
 
     const script = () => {
         const body = document.body;

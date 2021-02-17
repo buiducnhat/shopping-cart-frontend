@@ -1,5 +1,5 @@
 .cart {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .cart-save {
@@ -10,6 +10,7 @@
 
 .cart-save button {
     padding: 5px 10px;
+    width: 80px;
     background: var(--theme-color);
     color: #fff;
     border: none;

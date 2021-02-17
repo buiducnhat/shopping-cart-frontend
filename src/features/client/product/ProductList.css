@@ -7,8 +7,8 @@
     margin-top: 20px;
 }
 
-.widget-title h3 span{
-    font-size: 20px;
+.widget-title h2 span{
+    font-size: 1.5rem;
 }
 
 .widget-title span::before {

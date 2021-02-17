@@ -3,7 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {fetchListProducts} from './productSlice';
 import './ProductList.css';
 import qs from 'qs';
-import Product from './Product'
+import Product from './Product';
+import LoadingScreen from '../../../components/LoadingScreen';
 
 const ProductList = (props) => {
     const dispatch = useDispatch();
@@ -22,27 +23,30 @@ const ProductList = (props) => {
                 <div className='row'>
                     <div className='widget-title'>
                         <div className='col'>
-                            <h3>
+                            <h2>
                                 <span>All products</span>
-                            </h3>
+                            </h2>
                         </div>
                     </div>
                 </div>
                 <div className='row'>
                     {
-                        !isPendingProducts && productsList.length &&
-                        productsList.map((product, index) =>
-                            <Product
-                                key={index}
-                                props={props}
-                                id={product._id}
-                                name={product.name}
-                                productImage={product.productImage}
-                                price={product.price}
-                                salePrice={product.salePrice}
-                                description={product.description}
-                            />
-                        )
+                        (!isPendingProducts && productsList.length) ?
+                            productsList.map((product, index) =>
+                                <div className='col-lg-3 col-md-6'>
+                                    <Product
+                                        key={index}
+                                        props={props}
+                                        id={product._id}
+                                        name={product.name}
+                                        productImage={product.productImage}
+                                        price={product.price}
+                                        salePrice={product.salePrice}
+                                        description={product.description}
+                                    />
+                                </div>
+                            ) :
+                            <LoadingScreen />
                     }
                 </div>
             </div>

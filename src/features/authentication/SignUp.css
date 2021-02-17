@@ -1,10 +1,11 @@
-.login{
+.signup{
     padding-top: 20px;
 }
 
 .title{
     font-size: 1.5rem;
     text-transform: uppercase;
+    position: relative;
 }
 
 .title::before{
@@ -16,12 +17,12 @@
     bottom: -5px;
 }
 
-#login-form{
+#signup-form{
     width: 100%;
     margin-top: 40px;
 }
 
-#login-form input{
+#signup-form input{
     width: 100%;
     padding: 2px 5px;
     margin-bottom: 15px;
@@ -30,7 +31,7 @@
     border: 1px solid rgba(0,0,0,0.25);
 }
 
-#login-form #submit-btn{
+#signup-form #submit-btn{
     width: 100%;
     outline: none;
     font-size: 1.25rem;
@@ -43,11 +44,11 @@
     background: var(--theme-color);
 }
 
-#login-form #submit-btn:hover{
+#signup-form #submit-btn:hover{
     background: var(--hover-color);
 }
 
-#login-form .login-status{
+#signup-form .signup-status{
     font-size: 1rem;
     color: red;
     padding: 10px 0;
@@ -55,10 +56,10 @@
     align-items: center;
 }
 
-#login-form a{
+#signup-form a{
     color: var(--theme-color);
 }
 
-#login-form a:hover{
+#signup-form a:hover{
     color: var(--hover-color);
 }

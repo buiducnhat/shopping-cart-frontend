@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch} from 'react-redux';
-import {updateCart} from './cartSlice';
+import {updateCart, removeItem} from './cartSlice';
 import './CartItem.css';
 
 const CartItem = props => {
@@ -22,7 +22,7 @@ const CartItem = props => {
     }
 
     return (
-        <div className='row product-item'>
+        <div className='row cart-product-item'>
             <div className='col-lg-2 col-sm-3 col-5 product-image'>
                 <img src={productImage} alt='product' />
             </div>
@@ -33,7 +33,7 @@ const CartItem = props => {
                 </div>
 
                 <div className='price'>
-                    <span>{`$ ${salePrice.toLocaleString()}`}</span>
+                    <span>{`$ ${salePrice?.toLocaleString()}`}</span>
                 </div>
 
                 <div className='quantity'>
@@ -51,7 +51,12 @@ const CartItem = props => {
                 </div>
 
                 <div className='remove-btn'>
-                    <button><i className='fas fa-times'></i></button>
+                    <button onClick={() => {
+                        if (window.confirm('Are you sure to remove this item?'))
+                            dispatch(removeItem({productId}))
+                    }}>
+                        <i className='fas fa-times'></i>
+                    </button>
                 </div>
             </div>
         </div>

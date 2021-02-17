@@ -5,18 +5,19 @@
     text-decoration: none !important;
     list-style: none;
     outline: none;
-    font-family: "Roboto Slab", sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-size: 14px;
+    transition: ease-out 0.25s;
 }
 
 :root {
     --theme-color: #00b3b3;
-    --hover-color: #00aaaa;
+    --hover-color: #019c9c;
 }
 
 body {
     /* margin: 0; */
-    font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -31,4 +32,12 @@ i {
 
 button:focus {
     outline: none;
+}
+
+h2 {
+    font-weight: 1.5rem;
+}
+
+button, input, textarea, span {
+    font-family: "Quicksand", sans-serif;
 }

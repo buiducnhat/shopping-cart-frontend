@@ -5,11 +5,18 @@
 .product .product-image {
     text-align: center;
 }
+
 .product .product-image img {
-    height: 320px;
+    height: 235px;
     max-width: 100%;
     width: 100%;
     object-fit: cover;
+    transition: cubic-bezier(1, 1, 0.5, 1);
+}
+
+.product .product-image img:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .product .product-info {
@@ -37,36 +44,31 @@
     align-items: center;
 }
 
-.product .product-info .product-price-area .price span{
-    font-weight: 800;
+.product .product-info .product-price-area .price span {
+    font-weight: 700;
     font-size: 20px;
     color: var(--theme-color);
 }
 
-.product .product-info .product-price-area .line-through span{
+.product .product-info .product-price-area .line-through span {
     font-weight: 500;
     color: #555;
     text-decoration: line-through !important;
 }
 
-/* .product .product-info .product-price-area .sale-price {
-    color: var(--theme-color);
-} */
-
-.product .product-cart {
+.product .product-cart button {
     cursor: pointer;
-    text-align: center;
-    background: var(--theme-color);
-    padding: 15px 5px;
-}
-
-.product .product-cart a {
     color: #fff;
+    background: var(--theme-color);
+    border: none;
+    width: 100%;
+    padding: 15px 5px;
+    text-align: center;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
 }
 
-.product .product-cart:hover {
+.product .product-cart button:hover {
     background: var(--hover-color);
 }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import Loading from '../../components/Loading';
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from './authenticationSlice';
@@ -14,9 +14,6 @@ const Login = (props) => {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
 
-    if (isPendingLogin) {
-        return <Loading />;
-    }
     if (isLoggedIn) {
         return <Redirect to={{pathname: props.location.state?.lastUrl || listRouters.home}} />;
     }
@@ -38,12 +35,22 @@ const Login = (props) => {
                             </div>
 
                             {
+                                isPendingLogin && <Loading size={50}/>
+                            }
+
+                            {
                                 loginErrMsg &&
                                 <div className="login-status">
                                     <i className="far fa-times-circle"></i>
                                     {` ${loginErrMsg}`}
                                 </div>
                             }
+
+                            <span>
+                                Don't have an account?
+                                <Link className='ml-1' to={{pathname: listRouters.signUp}}>Sign up now</Link>
+                            </span>
+
                             <button id='submit-btn'
                                 onClick={() => dispatch(login({email: emailInput, password: passwordInput}))}>
                                 Log in

@@ -59,12 +59,46 @@ export const getUserData = createAsyncThunk(
     }
 );
 
+export const signUp = createAsyncThunk(
+    'authentication/signUp',
+    (params, {rejectWithValue}) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const serverUrl = process.env.REACT_APP_SERVER_URL;
+
+                let url = `${serverUrl}/users/signup`;
+
+                let data = JSON.stringify({
+                    email: params.email,
+                    name: params.name,
+                    phoneNumber: params.phoneNumber,
+                    address: params.address,
+                    password: params.password
+                });
+                let result = await axios.post(url, data, {
+                    headers: {'Content-Type': 'application/json'}
+                });
+
+                return resolve(result.data);
+            } catch (error) {
+                if (error.response) {
+                    return reject(rejectWithValue(error.response.data));
+                }
+                return reject(error);
+            }
+        });
+    }
+);
+
 export const authenticationSlice = createSlice({
     name: 'authentication',
     initialState: {
         loginErrMsg: null,
         isLoggedIn: false,
         isPendingLogin: false,
+
+        signUpErrMsg: null,
+        isPendingSignUp: false,
 
         getUserDataErrMsg: null,
         userData: null,
@@ -80,6 +114,7 @@ export const authenticationSlice = createSlice({
         }
     },
     extraReducers: {
+        // login handle
         [login.rejected]: (state, action) => {
             state.isPendingLogin = false;
             state.isLoggedIn = false;
@@ -99,6 +134,28 @@ export const authenticationSlice = createSlice({
             jsCookie.set('access-token', action.payload.accessToken);
         },
 
+        // signup handle
+        [signUp.rejected]: (state, action) => {
+            state.isPendingSignUp = false;
+            state.isLoggedIn = false;
+            state.userData = null;
+            state.signUpErrMsg = action.payload.message;
+            jsCookie.set('access-token', null);
+        },
+        [signUp.pending]: (state) => {
+            state.isLoggedIn = false;
+            state.signUpErrMsg = null;
+            state.isPendingSignUp = true;
+        },
+        [signUp.fulfilled]: (state, action) => {
+            state.isPendingSignUp = false;
+            state.isLoggedIn = true;
+            state.userData = {...action.payload?.userData, accessToken: action.payload.accessToken};
+            state.signUpErrMsg = null;
+            jsCookie.set('access-token', action.payload.accessToken);
+        },
+
+        // getUserData handle
         [getUserData.rejected]: (state, action) => {
             state.isPendingGetUserData = false;
             state.getUserDataErrMsg = action.payload?.message;
@@ -110,6 +167,9 @@ export const authenticationSlice = createSlice({
             if (action.payload) {
                 state.isLoggedIn = true;
                 state.userData = action.payload;
+                state.getUserDataErrMsg = null;
+                state.isPendingGetUserData = false;
+            } else {
                 state.getUserDataErrMsg = null;
                 state.isPendingGetUserData = false;
             }

@@ -3,9 +3,10 @@ module.exports = {
 
     account: '/accounts',
     login: '/login',
-    signup: '/signup',
+    signUp: '/signup',
 
     product: '/products',
+    productDetail: '/products/:id',
 
     cart: '/carts'
 }

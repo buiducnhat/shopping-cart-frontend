@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {getUserData, logout} from '../../authentication/authenticationSlice';
 import listRouters from '../../../app/listRouters';
-import Loading from '../../../components/Loading'
+import LoadingScreen from '../../../components/LoadingScreen'
 import './Account.css';
 
 const AccountCpn = (props) => {
@@ -56,20 +56,20 @@ const Account = (props) => {
     const isPendingGetUserData = useSelector(state => state.authenticationSlice.isPendingGetUserData);
     const userData = useSelector(state => state.authenticationSlice.userData);
 
-    useEffect(()=>{
-        dispatch(getUserData());
-    }, []);
+    useEffect(() => {
+        !isLoggedIn && dispatch(getUserData());
+    }, [dispatch, isLoggedIn]);
 
-    if (isPendingGetUserData && !isLoggedIn) {
-        return <Loading />;
-    } else if (!isLoggedIn) {
-        return userData ?
-            <AccountCpn userData={userData} dispatch={dispatch} /> :
-            <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.account}}} />;
+    if (isLoggedIn) {
+        return (isPendingGetUserData ?
+            <LoadingScreen /> :
+            <AccountCpn userData={userData} dispatch={dispatch} />
+        );
     } else {
-        return ((isLoggedIn && userData) ?
-            <AccountCpn userData={userData} dispatch={dispatch} /> :
-            <Loading />);
+        return (isPendingGetUserData ?
+            <LoadingScreen /> :
+            <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.account}}} />
+        );
     }
 };
 
