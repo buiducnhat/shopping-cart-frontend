@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {getUserData, logout} from '../../authentication/authenticationSlice';
+import {clearCart} from '../cart/cartSlice';
 import listRouters from '../../../app/listRouters';
 import LoadingScreen from '../../../components/LoadingScreen'
 import './Account.css';
@@ -16,7 +17,10 @@ const AccountCpn = (props) => {
                     <div className="col-md-6 avatar">
                         <img src={userData.avatar} alt='avatar' />
                         <div className="logout">
-                            <button onClick={() => props.dispatch(logout())}>
+                            <button onClick={() => {
+                                props.dispatch(clearCart());
+                                props.dispatch(logout());
+                            }}>
                                 <i className="fas fa-sign-out-alt"></i>
                             </button>
                         </div>
@@ -60,16 +64,24 @@ const Account = (props) => {
         !isLoggedIn && dispatch(getUserData());
     }, [dispatch, isLoggedIn]);
 
-    if (isLoggedIn) {
-        return (isPendingGetUserData ?
-            <LoadingScreen /> :
-            <AccountCpn userData={userData} dispatch={dispatch} />
-        );
+    // if (isLoggedIn) {
+    //     return (isPendingGetUserData ?
+    //         <LoadingScreen /> :
+    //         <AccountCpn userData={userData} dispatch={dispatch} />
+    //     );
+    // } else {
+    //     return (isPendingGetUserData ?
+    //         <LoadingScreen /> :
+    //         <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.account}}} />
+    //     );
+    // }
+
+    if (isPendingGetUserData) {
+        return <LoadingScreen />;
     } else {
-        return (isPendingGetUserData ?
-            <LoadingScreen /> :
-            <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.account}}} />
-        );
+        return isLoggedIn ?
+            <AccountCpn userData={userData} dispatch={dispatch} /> :
+            <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.account}}} />;
     }
 };
 

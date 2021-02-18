@@ -9,10 +9,14 @@
     height: auto;
 }
 
-.cart-product-item .product-detail .product-name h3 {
-    font-size: 1.1rem;
+.cart-product-item .product-detail .product-name h3 a {
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--theme-color);
+}
+
+.cart-product-item .product-detail .price {
+    margin-bottom: 0.75rem;
 }
 
 .cart-product-item .product-detail .price span {

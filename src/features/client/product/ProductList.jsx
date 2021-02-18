@@ -15,7 +15,7 @@ const ProductList = (props) => {
     }, [dispatch, props.location.search]);
 
     const productsList = useSelector(state => state.productSlice.products);
-    const isPendingProducts = useSelector(state => state.productSlice.isPendingProducts);
+    const isPendingFetchListProducts = useSelector(state => state.productSlice.isPendingFetchListProducts);
 
     return (
         <section className='product-list'>
@@ -31,7 +31,7 @@ const ProductList = (props) => {
                 </div>
                 <div className='row'>
                     {
-                        (!isPendingProducts && productsList.length) ?
+                        (!isPendingFetchListProducts && productsList.length) ?
                             productsList.map((product, index) =>
                                 <div className='col-lg-3 col-md-6'>
                                     <Product

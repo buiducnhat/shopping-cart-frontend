@@ -3,6 +3,7 @@ import {Redirect, Link} from 'react-router-dom';
 import Loading from '../../components/Loading';
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from './authenticationSlice';
+import {getCart} from '../client/cart/cartSlice';
 import './Login.css';
 import listRouters from '../../app/listRouters';
 
@@ -15,6 +16,7 @@ const Login = (props) => {
     const [passwordInput, setPasswordInput] = useState('');
 
     if (isLoggedIn) {
+        dispatch((getCart()));
         return <Redirect to={{pathname: props.location.state?.lastUrl || listRouters.home}} />;
     }
     return (
@@ -35,7 +37,7 @@ const Login = (props) => {
                             </div>
 
                             {
-                                isPendingLogin && <Loading size={50}/>
+                                isPendingLogin && <Loading size={50} />
                             }
 
                             {

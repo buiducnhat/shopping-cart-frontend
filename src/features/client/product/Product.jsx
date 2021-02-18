@@ -7,7 +7,7 @@ import Loading from '../../../components/Loading';
 import './Product.css'
 
 const Product = props => {
-    const {id, name, price, salePrice, productImage, description} = props;
+    const {id, name, price, salePrice, productImage} = props;
     const dispatch = useDispatch();
     const isPendingAddToCart = useSelector(state => state.cartSlice.isPendingAddToCart);
 
@@ -18,12 +18,7 @@ const Product = props => {
             </div>
             <div className='product-info'>
                 <h4 className='product-title'>
-                    <Link to={
-                        {
-                            pathname: `${listRouters.product}/${id}`,
-                            state: {id, name, price, salePrice, productImage, description}
-                        }
-                    }>
+                    <Link to={{pathname: `${listRouters.product}/${id}`}}>
                         {name}
                     </Link>
                 </h4>
@@ -52,7 +47,7 @@ const Product = props => {
                     onClick={() => dispatch(addToCart({productId: id, quantity: 1}))}
                 >
                     {
-                        isPendingAddToCart ? <Loading size={30}/> :
+                        isPendingAddToCart ? <Loading size={30} /> :
                             (<>
                                 <i className='fas fa-shopping-cart'></i>
                                 <span>Add to Cart</span>

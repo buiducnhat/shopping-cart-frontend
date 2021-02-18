@@ -66,7 +66,7 @@ export const saveCart = createAsyncThunk('cart/saveCart', (params, {rejectWithVa
             return reject(error);
         }
     })
-})
+});
 
 export const cartSlice = createSlice({
     name: 'cart',
@@ -102,6 +102,10 @@ export const cartSlice = createSlice({
         removeItem(state, action) {
             state.total = state.total - state.items.find(item => item.productId === action.payload.productId).subTotal;
             state.items = state.items.filter(item => item.productId !== action.payload.productId);
+        },
+        clearCart(state, action) {
+            state.items = [];
+            state.total = 0;
         }
     },
     extraReducers: {
@@ -153,6 +157,6 @@ export const cartSlice = createSlice({
     }
 });
 
-export const {updateCart, removeItem} = cartSlice.actions;
+export const {updateCart, removeItem, clearCart} = cartSlice.actions;
 
 export default cartSlice.reducer;

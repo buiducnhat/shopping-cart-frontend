@@ -1,6 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {updateCart, removeItem} from './cartSlice';
+import listRouters from '../../../app/listRouters';
 import './CartItem.css';
 
 const CartItem = props => {
@@ -29,7 +31,9 @@ const CartItem = props => {
             <div className='col-lg-10 col-sm-9 col-7 product-detail'>
 
                 <div className='product-name'>
-                    <h3>{name}</h3>
+                    <h3>
+                        <Link to={{pathname: `${listRouters.product}/${productId}`}}>{name}</Link>
+                    </h3>
                 </div>
 
                 <div className='price'>

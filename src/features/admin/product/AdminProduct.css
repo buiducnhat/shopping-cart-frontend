@@ -1,0 +1,74 @@
+.table {
+    background: rgba(199, 206, 205, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: none;
+}
+
+.table thead {
+    background: var(--theme-color);
+    color: #fff;
+}
+
+.table thead th {
+    border: none;
+}
+
+.table td, .table th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table tbody tr:hover {
+    cursor: pointer;
+    background: var(--hover-color) !important;
+    color: #fff !important;
+}
+
+.product-table {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.row-handle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.row-handle button {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+}
+
+.row-handle button:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+}
+
+.row-handle .button-edit {
+    background: #2980b9;
+}
+
+.row-handle .button-delete {
+    background: #c0392b;
+}
+
+.products-handle {
+    width: 100%;
+    text-align: center;
+}
+
+.products-handle button {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    background: var(--theme-color);
+    outline: none;
+    border: none;
+}
+
+.products-handle button:hover {
+    background: var(--hover-color);
+}

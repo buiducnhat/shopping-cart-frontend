@@ -6,7 +6,11 @@ module.exports = {
     signUp: '/signup',
 
     product: '/products',
-    productDetail: '/products/:id',
+    productDetail: '/products/:productId',
 
-    cart: '/carts'
+    cart: '/carts',
+
+    order: '/orders',
+
+    adminDashboard: '/admin'
 }
