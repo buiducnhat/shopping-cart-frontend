@@ -133,7 +133,6 @@ export const cartSlice = createSlice({
             state.isPendingSaveCart = true;
         },
         [saveCart.fulfilled]: (state, action) => {
-            console.log(action.payload);
             state.isPendingSaveCart = false;
             state.saveCartErrMsg = null;
             // state.items = action.payload.items;

@@ -1,0 +1,78 @@
+.order-list span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.order-list .order-item {
+    background: #fcfff9;
+    margin: 1rem;
+    padding: 1rem 1rem 0 1rem;
+    box-shadow: 0px 0px 10px 3px rgba(100, 100, 100, 0.1);
+}
+
+.order-list .order-item .order-info {
+    border-bottom: 1px solid #2ecc7033;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+.order-list .order-item .cost {
+    text-align: right;
+}
+
+.order-list .order-item .status {
+    text-align: right;
+}
+
+.order-list .order-item .completed {
+    color: #2ecc71;
+}
+
+.order-list .order-item .active {
+    color: #3498db;
+}
+
+.order-list .order-item .cancelled {
+    color: #c0392b;
+}
+
+.order-list .order-item .option .option-btn {
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.order-list .order-item .option .dropdown-menu button {
+    font-weight: 500;
+}
+
+.order-list .order-item .product-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+}
+
+.order-list .order-item .product-item .product-image img {
+    max-width: 100% !important;
+}
+
+.order-list .order-item .product-item .product-info h3 a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--theme-color)
+}
+
+.order-list .order-item .product-item .product-info .cost {
+    position: absolute;
+    right: 1rem;
+    bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.order-list .order-item .product-item .product-info .quantity {
+    position: absolute;
+    font-weight: normal;
+    right: 1rem;
+    bottom: 0;
+}

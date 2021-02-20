@@ -1,0 +1,83 @@
+.checkout-list .checkout-items {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.checkout-list .checkout-item {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.checkout-list .checkout-item .product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.checkout-list .checkout-item .product-detail .product-name h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--theme-color);
+}
+
+.checkout-list .checkout-item .product-detail .price span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.checkout-list .checkout-item .quantity {
+    display: flex;
+    flex-direction: row;
+}
+
+.checkout-list .checkout-item .quantity input {
+    width: 35px;
+    height: 25px;
+    outline: none;
+    border: 1px solid rgb(100, 100, 100, 0.2);
+    background-color: rgb(100, 100, 100, 0.05);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.checkout-list .checkout-item .cost {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+.checkout-list .checkout-item .cost span {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.checkout-list .checkout-info-form .checkout-info-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.checkout-list .checkout-info-form .cost p {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.checkout-list .checkout-info-form .cost span {
+    color: var(--theme-color);
+    font-weight: 600;
+}
+
+.checkout-list .checkout-info-form button {
+    margin-top: 1.5rem;
+    bcheckout: none;
+    padding: 10px;
+    background: var(--theme-color);
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: 600;
+}
+
+.checkout-list .checkout-info-form button:hover {
+    background: var(--hover-color);
+}

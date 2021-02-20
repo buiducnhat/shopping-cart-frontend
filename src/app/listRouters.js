@@ -9,7 +9,7 @@ module.exports = {
     productDetail: '/products/:productId',
 
     cart: '/carts',
-
+    checkout: '/checkout',
     order: '/orders',
 
     adminDashboard: '/admin'

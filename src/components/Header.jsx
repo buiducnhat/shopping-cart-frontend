@@ -96,10 +96,7 @@ const Header = (props) => {
                                         <Link to={{pathname: listRouters.product}}>Shop</Link>
                                     </li>
                                     <li className='desktop-menu-item'>
-                                        <Link to={{pathname: listRouters.home}}>Blog</Link>
-                                    </li>
-                                    <li className='desktop-menu-item'>
-                                        <Link to={{pathname: listRouters.home}}>Contact</Link>
+                                        <Link to={{pathname: listRouters.order}}>Contact</Link>
                                     </li>
                                 </ul>
                                 <button id='mobile-menu-trigger' className='mobile-menu-trigger' style={{display: 'none'}}>
@@ -111,9 +108,6 @@ const Header = (props) => {
                                     </li>
                                     <li className='mobile-menu-item'>
                                         <Link to={{pathname: listRouters.product}}>Shop</Link>
-                                    </li>
-                                    <li className='mobile-menu-item'>
-                                        <Link to={{pathname: listRouters.home}}>Blog</Link>
                                     </li>
                                     <li className='mobile-menu-item'>
                                         <Link to={{pathname: listRouters.home}}>Contact</Link>

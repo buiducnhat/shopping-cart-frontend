@@ -64,18 +64,6 @@ const Account = (props) => {
         !isLoggedIn && dispatch(getUserData());
     }, [dispatch, isLoggedIn]);
 
-    // if (isLoggedIn) {
-    //     return (isPendingGetUserData ?
-    //         <LoadingScreen /> :
-    //         <AccountCpn userData={userData} dispatch={dispatch} />
-    //     );
-    // } else {
-    //     return (isPendingGetUserData ?
-    //         <LoadingScreen /> :
-    //         <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.account}}} />
-    //     );
-    // }
-
     if (isPendingGetUserData) {
         return <LoadingScreen />;
     } else {
