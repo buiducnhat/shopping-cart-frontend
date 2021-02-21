@@ -16,7 +16,7 @@
     font-weight: 500;
     border: none;
     box-shadow: 1px 1px 5px 0px rgba(100, 100, 100);
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -40,8 +40,6 @@
     padding: 10px;
     width: 200px;
     background: var(--theme-color);
-    color: #fff;
-    font-weight: 500;
     border: none;
     box-shadow: 1px 1px 5px 0px rgba(100, 100, 100);
     font-size: 1.2rem;
@@ -49,6 +47,12 @@
     position: absolute;
     right: 1rem;
     bottom: 0;
+}
+
+.cart-checkout button a{
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 .cart-checkout button:hover {

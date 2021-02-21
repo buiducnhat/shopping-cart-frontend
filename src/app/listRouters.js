@@ -1,4 +1,7 @@
 module.exports = {
+    clientEndpoint: '/',
+    adminEndpoint: '/admin',
+
     home: '/home',
 
     account: '/accounts',
@@ -12,5 +15,5 @@ module.exports = {
     checkout: '/checkout',
     order: '/orders',
 
-    adminDashboard: '/admin'
+    adminProduct: '/admin/products'
 }

@@ -22,6 +22,30 @@ export const getOrdersOfUser = createAsyncThunk('order/getOrdersOfUser', (params
     })
 });
 
+export const createOrder = createAsyncThunk('order/createOrder', ({name, phoneNumber, address}, {rejectWithValue}) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERVER_URL}/orders`;
+            const accessToken = jsCookie.get('access-token');
+            const response = await axios.post(url, {
+                name,
+                phoneNumber,
+                address
+            }, {
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+            return resolve(response.data);
+        } catch (error) {
+            if (error.response) {
+                return reject(rejectWithValue(error.response.data));
+            }
+            return reject(error);
+        }
+    })
+});
+
 export const completeOrder = createAsyncThunk('order/completeOrder', (params, {rejectWithValue}) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -71,6 +95,9 @@ export const orderSlice = createSlice({
         isPendingGetOrdersOfUser: false,
         getOrdersOfUserErrMsg: null,
 
+        isPendingCreateOrder: false,
+        createOrderErrMsg: null,
+
         isPendingCompleteOrder: false,
         completeOrderErrMsg: null,
 
@@ -93,6 +120,19 @@ export const orderSlice = createSlice({
             state.orders = action.payload || [];
             state.getOrdersOfUserErrMsg = null;
             state.isPendingGetOrdersOfUser = false;
+        },
+
+        // handle create order
+        [createOrder.rejected]: (state, action) => {
+            state.isPendingCreateOrder = false;
+            state.createOrderErrMsg = action.payload?.message || action.error.message;
+        },
+        [createOrder.pending]: (state, action) => {
+            state.isPendingCreateOrder = true;
+        },
+        [createOrder.fulfilled]: (state, action) => {
+            state.createOrderErrMsg = null;
+            state.isPendingCreateOrder = false;
         },
 
         // handle complete order

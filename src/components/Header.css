@@ -1,25 +1,3 @@
-/* ---Media min width for container--- */
-
-/* @media (min-width: 768px) {
-    .container {
-        max-width: 750px;
-    }
-}
-
-@media (min-width: 992px) {
-    .container {
-        max-width: 970px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1170px;
-    }
-} */
-
-/* ---End Media min width for container--- */
-
 /* Top header bar */
 
 .top-header-bar {
@@ -47,6 +25,8 @@
     padding-left: 40px;
     padding-right: 40px;
     background: var(--theme-color);
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .top-header-bar .top-cart:hover {
@@ -58,6 +38,8 @@
     padding-left: 20px;
     padding-right: 20px;
     border-left: 1px solid #353940;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .top-header-bar .top-account a:hover {
@@ -76,7 +58,7 @@
     border-radius: 3px;
     padding: 3px;
     color: #fff;
-    font-size: 15px;
+    font-size: 1rem;
     padding-left: 10px;
     padding-right: 15px;
     height: 30px;
@@ -144,12 +126,12 @@
 }
 
 .site-header .site-nav .desktop-menu .desktop-menu-item a {
-    font-size: 15px;
+    font-size: 1rem;
     display: block;
     color: #fff;
     padding: 15px 30px 15px 0;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .site-header .site-nav .desktop-menu .desktop-menu-item a:hover {
@@ -189,7 +171,7 @@
     display: block;
     padding: 14px 0px;
     border-top: 1px solid rgba(255, 255, 255, .25);
-    font-size: 15px;
+    font-size: 1rem;
     text-align: left;
     text-decoration: none;
     color: #fff;

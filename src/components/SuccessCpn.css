@@ -1,0 +1,14 @@
+.success-cpn .title span {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.success-cpn .body .icon i {
+    font-size: 10rem;
+    color: #61db61;
+}
+
+.success-cpn .body .content p{
+    font-size: 1.25rem;
+    text-align: center;
+}

@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {getCart, saveCart} from './cartSlice';
@@ -37,7 +38,7 @@ const Cart = () => {
                                     {
                                         isPendingSaveCart ? <Loading size={30} />
                                             : (
-                                                <><i className='far fa-save'></i>Save</>
+                                                <React.Fragment><i className='far fa-save'></i>Save</ React.Fragment>
                                             )
                                     }
                                 </button>
@@ -45,7 +46,7 @@ const Cart = () => {
                         </div>
                         {
                             cartItems.length ?
-                                <>
+                                <React.Fragment>
                                     <div className='row cart-items'>
                                         {
                                             cartItems.map((cartItem, index) =>
@@ -64,9 +65,11 @@ const Cart = () => {
                                     </div>
                                     <div className="row cart-checkout">
                                         <span>Total: <span>${cartTotal}</span></span>
-                                        <button>Checkout</button>
+                                        <button>
+                                            <Link to={{pathname: listRouters.checkout}}>Checkout</Link>
+                                        </button>
                                     </div>
-                                </>
+                                </React.Fragment>
                                 :
                                 <div className='no-item ml-3'>
                                     <h4>Your cart is empty!</h4>

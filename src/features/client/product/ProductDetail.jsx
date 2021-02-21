@@ -73,11 +73,11 @@ const ProductDetail = props => {
                                 }}>
                                     {
                                         isPendingAddToCart ?
-                                            <Loading /> :
-                                            <>
+                                            <Loading size={30}/> :
+                                            <React.Fragment>
                                                 <i className='fas fa-cart-plus'></i>
                                                 <span>Add to cart</span>
-                                            </>
+                                            </React.Fragment>
                                     }
                                 </button>
                             </div>

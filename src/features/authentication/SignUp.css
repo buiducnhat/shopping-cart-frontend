@@ -2,13 +2,13 @@
     padding-top: 20px;
 }
 
-.title{
+.signup .title{
     font-size: 1.5rem;
     text-transform: uppercase;
     position: relative;
 }
 
-.title::before{
+.signup .title::before{
     content: "";
     background: var(--theme-color);
     position: absolute;

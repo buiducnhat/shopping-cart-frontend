@@ -26,14 +26,14 @@ const Product = props => {
                     {
                         salePrice ?
                             (
-                                <>
+                                <React.Fragment>
                                     <div className='price orignal-price line-through'>
                                         <span>{`$ ${price.toLocaleString()}`}</span>
                                     </div>
                                     <div className='price sale-price'>
                                         <span>{`$ ${salePrice.toLocaleString()}`}</span>
                                     </div>
-                                </>
+                                </React.Fragment>
                             ) : (
                                 <div className='price orignal-price'>
                                     <span>{`$ ${price.toLocaleString()}`}</span>
@@ -48,10 +48,10 @@ const Product = props => {
                 >
                     {
                         isPendingAddToCart ? <Loading size={30} /> :
-                            (<>
+                            (<React.Fragment>
                                 <i className='fas fa-shopping-cart'></i>
                                 <span>Add to Cart</span>
-                            </>)
+                            </ React.Fragment>)
                     }
                 </button>
             </div>
