@@ -39,10 +39,10 @@ const Footer = (props) => {
                 </div>
                 <div className='row social'>
                     <div className='col-2 item'>
-                        <Link to={{pathname: 'www.facebook.com/gerpan.4701'}}><i className='fab fa-facebook'></i></Link>
+                        <Link to={{pathname: 'https://facebook.com/gerpan.4701'}} target={'_blank'} ><i className='fab fa-facebook'></i></Link>
                     </div>
                     <div className='col-2 item'>
-                        <Link to={{pathname: 'https://github.com/gerpann'}}><i className='fab fa-github'></i></Link>
+                        <Link to={{pathname: 'https://github.com/gerpann'}} target={'_blank'}><i className='fab fa-github'></i></Link>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@ const Footer = (props) => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col item'>
-                            <span>© 2021 Copyright: <Link to={{pathname: 'www.facebook.com/gerpan.4701'}}>Gerpan</Link></span>
+                            <span>© 2021 Copyright: <Link to={{pathname: 'https://facebook.com/gerpan.4701'}} target={'_blank'}>Gerpan</Link></span>
                         </div>
                     </div>
                 </div>

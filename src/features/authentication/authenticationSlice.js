@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
-import jsCookie from 'js-cookie';
 
 export const login = createAsyncThunk(
     'authentication/login',
@@ -38,7 +37,7 @@ export const getUserData = createAsyncThunk(
                 const serverUrl = process.env.REACT_APP_SERVER_URL;
                 let url = `${serverUrl}/users/`;
 
-                const accessToken = jsCookie.get('access-token');
+                const accessToken = localStorage.getItem('access-token');
                 if (!accessToken) {
                     return resolve(null);
                 }
@@ -110,7 +109,7 @@ export const authenticationSlice = createSlice({
             state.getUserDataErrMsg = null;
             state.userData = null;
             state.isLoggedIn = false;
-            jsCookie.set('access-token', null);
+            localStorage.setItem('access-token', null);
         }
     },
     extraReducers: {
@@ -120,7 +119,7 @@ export const authenticationSlice = createSlice({
             state.isLoggedIn = false;
             state.userData = null;
             state.loginErrMsg = action.payload.message;
-            jsCookie.set('access-token', null);
+            localStorage.setItem('access-token', null);
         },
         [login.pending]: (state) => {
             state.isLoggedIn = false;
@@ -131,7 +130,7 @@ export const authenticationSlice = createSlice({
             state.isLoggedIn = true;
             state.userData = {...action.payload?.userData, accessToken: action.payload.accessToken};
             state.loginErrMsg = null;
-            jsCookie.set('access-token', action.payload.accessToken);
+            localStorage.setItem('access-token', action.payload.accessToken);
         },
 
         // signup handle
@@ -140,7 +139,7 @@ export const authenticationSlice = createSlice({
             state.isLoggedIn = false;
             state.userData = null;
             state.signUpErrMsg = action.payload.message;
-            jsCookie.set('access-token', null);
+            localStorage.setItem('access-token', null);
         },
         [signUp.pending]: (state) => {
             state.isLoggedIn = false;
@@ -152,7 +151,7 @@ export const authenticationSlice = createSlice({
             state.isLoggedIn = true;
             state.userData = {...action.payload?.userData, accessToken: action.payload.accessToken};
             state.signUpErrMsg = null;
-            jsCookie.set('access-token', action.payload.accessToken);
+            localStorage.setItem('access-token', action.payload.accessToken);
         },
 
         // getUserData handle

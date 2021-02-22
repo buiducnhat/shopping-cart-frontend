@@ -1,12 +1,11 @@
 import axios from 'axios';
-import jsCookie from 'js-cookie';
 import {createSlice, createAsyncThunk, current} from '@reduxjs/toolkit';
 
 export const getOrdersOfUser = createAsyncThunk('order/getOrdersOfUser', (params, {rejectWithValue}) => {
     return new Promise(async (resolve, reject) => {
         try {
             const url = `${process.env.REACT_APP_SERVER_URL}/orders`;
-            const accessToken = jsCookie.get('access-token');
+            const accessToken = localStorage.getItem('access-token');
             const response = await axios.get(url, {
                 headers: {
                     'Authorization': 'Bearer ' + accessToken
@@ -26,7 +25,7 @@ export const createOrder = createAsyncThunk('order/createOrder', ({name, phoneNu
     return new Promise(async (resolve, reject) => {
         try {
             const url = `${process.env.REACT_APP_SERVER_URL}/orders`;
-            const accessToken = jsCookie.get('access-token');
+            const accessToken = localStorage.getItem('access-token');
             const response = await axios.post(url, {
                 name,
                 phoneNumber,
@@ -50,7 +49,7 @@ export const completeOrder = createAsyncThunk('order/completeOrder', (params, {r
     return new Promise(async (resolve, reject) => {
         try {
             const url = `${process.env.REACT_APP_SERVER_URL}/orders/complete/${params.orderId}`;
-            const accessToken = jsCookie.get('access-token');
+            const accessToken = localStorage.getItem('access-token');
             const response = await axios.post(url, {}, {
                 headers: {
                     'Authorization': 'Bearer ' + accessToken
@@ -71,7 +70,7 @@ export const cancelOrder = createAsyncThunk('order/cancelOrder', (params, {rejec
     return new Promise(async (resolve, reject) => {
         try {
             const url = `${process.env.REACT_APP_SERVER_URL}/orders/cancel/${params.orderId}`;
-            const accessToken = jsCookie.get('access-token');
+            const accessToken = localStorage.getItem('access-token');
             const response = await axios.post(url, {}, {
                 headers: {
                     'Authorization': 'Bearer ' + accessToken

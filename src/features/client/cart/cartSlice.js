@@ -1,12 +1,11 @@
 import axios from 'axios';
-import jsCookie from 'js-cookie';
 import {createSlice, createAsyncThunk, current} from '@reduxjs/toolkit';
 
 export const getCart = createAsyncThunk('cart/getCart', (params, {rejectWithValue}) => {
     return new Promise(async (resolve, reject) => {
         try {
             const url = `${process.env.REACT_APP_SERVER_URL}/carts`;
-            const accessToken = jsCookie.get('access-token');
+            const accessToken = localStorage.getItem('access-token');
             const response = await axios.get(url, {
                 headers: {
                     'Authorization': 'Bearer ' + accessToken
@@ -26,7 +25,7 @@ export const addToCart = createAsyncThunk('cart/addToCart', (params, {rejectWith
     return new Promise(async (resolve, reject) => {
         try {
             const url = `${process.env.REACT_APP_SERVER_URL}/carts`;
-            const accessToken = jsCookie.get('access-token');
+            const accessToken = localStorage.getItem('access-token');
             const {productId, quantity} = params;
 
             const response = await axios.post(url, {productId, quantity}, {
@@ -49,7 +48,7 @@ export const saveCart = createAsyncThunk('cart/saveCart', (params, {rejectWithVa
     return new Promise(async (resolve, reject) => {
         try {
             const url = `${process.env.REACT_APP_SERVER_URL}/carts`;
-            const accessToken = jsCookie.get('access-token');
+            const accessToken = localStorage.getItem('access-token');
             const {newItems} = params;
 
             const response = await axios.put(url, {items: newItems}, {
