@@ -29,6 +29,11 @@ body {
     display: table;
 }
 
+section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -59,4 +64,23 @@ button, input, textarea, span {
 
 ::-webkit-scrollbar-track {
     background: rgba(100, 100, 100, 0.25);
+}
+
+.widget-title {
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.widget-title h2 span {
+    font-size: 1.5rem;
+}
+
+.widget-title span::before {
+    content: "";
+    width: 40px;
+    height: 4px;
+    position: absolute;
+    bottom: -5px;
+    left: 15px;
+    background: var(--theme-color);
 }

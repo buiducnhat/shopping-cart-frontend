@@ -10,7 +10,7 @@ const LoadingScreen = () => {
     return (
         < section {...containerProps}>
             <div className='container'>
-                <div className='row d-flex justify-content-center mt-5'>
+                <div className='row d-flex justify-content-center mt-5 mb-5'>
                     {indicatorEl}
                 </div>
             </div>

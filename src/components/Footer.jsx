@@ -4,10 +4,8 @@ import listRouters from '../app/listRouters';
 import './Footer.css';
 
 const Footer = (props) => {
-
-
     return (
-        <footer className='footer mt-5'>
+        <footer className='footer'>
             <div className='container'>
                 <div className='row pt-3 mb-3 text-center d-flex justify-content-center link'>
                     <div className='col-md'>

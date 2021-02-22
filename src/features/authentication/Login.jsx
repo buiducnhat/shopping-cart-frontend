@@ -20,7 +20,7 @@ const Login = (props) => {
         return <Redirect to={{pathname: props.location.state?.lastUrl || listRouters.home}} />;
     }
     return (
-        <div className='login'>
+        <section className='login'>
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-4'>
@@ -61,7 +61,7 @@ const Login = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

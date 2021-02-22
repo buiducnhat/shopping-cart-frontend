@@ -10,7 +10,7 @@ import './Account.css';
 const AccountCpn = (props) => {
     const {userData} = props;
     return (
-        <div className='account'>
+        <section className='account'>
             <div className='container'>
                 <div className="row account-profile">
 
@@ -50,7 +50,7 @@ const AccountCpn = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

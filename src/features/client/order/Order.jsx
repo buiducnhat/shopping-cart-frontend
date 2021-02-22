@@ -23,7 +23,7 @@ const Order = () => {
             <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.order}}} />
             : (
                 isPendinggetOrdersOfUser ? <LoadingScreen /> :
-                    <div className='order-list'>
+                    <section className='order-list'>
                         <div className='container'>
                             <div className='row widget-title mb-5'>
                                 <div className='col'>
@@ -54,7 +54,7 @@ const Order = () => {
                                     </div>
                             }
                         </div>
-                    </div>
+                    </section>
             )
     );
 }

@@ -24,7 +24,7 @@ const SignUp = props => {
     }
 
     return (
-        <div className="signup">
+        <section className="signup">
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-4'>
@@ -93,7 +93,7 @@ const SignUp = props => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 };
 

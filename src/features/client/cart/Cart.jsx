@@ -25,7 +25,7 @@ const Cart = () => {
         <Redirect to={{pathname: listRouters.login, state: {lastUrl: listRouters.cart}}} />
         : (
             isPendingGetCart ? <LoadingScreen /> :
-                <div className='cart'>
+                <section className='cart'>
                     <div className='container'>
                         <div className='row widget-title mb-5'>
                             <div className='col'>
@@ -76,7 +76,7 @@ const Cart = () => {
                                 </div>
                         }
                     </div>
-                </div>
+                </section>
         )
 }
 
