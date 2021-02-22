@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchListProducts} from './productSlice';
-import './ProductList.css';
 import qs from 'qs';
 import Product from './Product';
 import LoadingScreen from '../../../components/LoadingScreen';
