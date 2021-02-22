@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import {Redirect} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchDetailProduct} from './productSlice';
 import {addToCart} from '../cart/cartSlice';
 import Loading from '../../../components/Loading';
 import LoadingScreen from '../../../components/LoadingScreen';
+import listRouters from '../../../app/listRouters';
 import './ProductDetail.css';
 
 const ProductDetail = props => {
@@ -14,6 +16,8 @@ const ProductDetail = props => {
     const isPendingFetchDetailProduct = useSelector(state => state.productSlice.isPendingFetchDetailProduct);
     const currentProduct = useSelector(state => state.productSlice.currentProduct);
     const isPendingAddToCart = useSelector(state => state.cartSlice.isPendingAddToCart);
+
+    const isLoggedIn = useSelector(state => state.authenticationSlice.isLoggedIn);
 
     const {name, productImage, description, price, salePrice} = currentProduct;
 
@@ -53,14 +57,14 @@ const ProductDetail = props => {
                             </div>
 
                             <div className='product-detail-price'>
-                            {
-                                salePrice ?
-                                    <React.Fragment>
-                                        <span className='old-price'>{`$ ${price}`}</span>
-                                        <span className='sale-price'>{`$ ${salePrice}`}</span>
-                                    </React.Fragment>
-                                    : <span className='orignal-price'>{`$ ${price}`}</span>
-                            }
+                                {
+                                    salePrice ?
+                                        <React.Fragment>
+                                            <span className='old-price'>{`$ ${price}`}</span>
+                                            <span className='sale-price'>{`$ ${salePrice}`}</span>
+                                        </React.Fragment>
+                                        : <span className='orignal-price'>{`$ ${price}`}</span>
+                                }
                             </div>
 
                             <div className='product-detail-quantity'>
@@ -75,7 +79,8 @@ const ProductDetail = props => {
 
                             <div className='product-detail-cart'>
                                 <button onClick={() => {
-                                    dispatch(addToCart({productId, quantity}))
+                                    isLoggedIn ? dispatch(addToCart({productId, quantity})) :
+                                        <Redirect to={{pathname: listRouters.login}} />
                                 }}>
                                     {
                                         isPendingAddToCart ?

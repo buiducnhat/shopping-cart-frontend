@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import listRouters from '../../../app/listRouters';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../cart/cartSlice';
@@ -10,6 +10,7 @@ const Product = props => {
     const {id, name, price, salePrice, productImage} = props;
     const dispatch = useDispatch();
     const isPendingAddToCart = useSelector(state => state.cartSlice.isPendingAddToCart);
+    const isLoggedIn = useSelector(state => state.authenticationSlice.isLoggedIn);
 
     return (
         <div className='product'>
@@ -44,7 +45,12 @@ const Product = props => {
             </div>
             <div className='product-cart'>
                 <button className='product-cart-button'
-                    onClick={() => dispatch(addToCart({productId: id, quantity: 1}))}
+                    onClick={
+                        () => {
+                            isLoggedIn ? dispatch(addToCart({productId: id, quantity: 1})) :
+                                <Redirect to={{pathname: listRouters.login}} />
+                        }
+                    }
                 >
                     {
                         isPendingAddToCart ? <Loading size={30} /> :
