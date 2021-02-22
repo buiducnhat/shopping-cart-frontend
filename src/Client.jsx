@@ -8,6 +8,7 @@ import Account from './features/client/account/Account';
 import Login from './features/authentication/Login';
 import SignUp from './features/authentication/SignUp';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import listRouters from './app/listRouters';
 
 const Client = props => {
@@ -23,6 +24,7 @@ const Client = props => {
                 <Route path={listRouters.checkout} render={props => <Checkout {...props} />} />
                 <Route path={listRouters.order} render={props => <Order {...props} />} />
             </Switch>
+            <Footer />
         </React.Fragment>
     );
 }

@@ -6,7 +6,7 @@ import listRouters from '../../../app/listRouters';
 import {completeOrder, cancelOrder} from './orderSlice';
 
 const ProductItem = props => {
-    const {productId, name, salePrice, productImage, quantity} = props;
+    const {productId, name, price, salePrice, productImage, quantity} = props;
 
     return (
         <div className='row product-item'>
@@ -17,7 +17,7 @@ const ProductItem = props => {
                 <h3 className='name'>
                     <Link to={{pathname: `${listRouters.product}/${productId}`}}>{name}</Link>
                 </h3>
-                <span className='cost'>$ {salePrice.toLocaleString()}</span>
+                <span className='cost'>$ {salePrice?.toLocaleString() || price.toLocaleString()}</span>
                 <span className='quantity'>x {quantity}</span>
             </div>
         </div>
@@ -97,6 +97,7 @@ const OrderItem = props => {
                             key={index}
                             productId={item.productId}
                             name={item.name}
+                            price={item.price}
                             salePrice={item.salePrice}
                             productImage={item.productImage}
                             quantity={item.quantity}

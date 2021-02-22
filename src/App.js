@@ -5,8 +5,6 @@ import Admin from './Admin';
 import listRouters from './app/listRouters';
 import './App.css';
 
-require('dotenv').config()
-
 function App() {
     return (
         <Switch>

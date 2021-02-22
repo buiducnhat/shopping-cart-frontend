@@ -19,7 +19,7 @@ const Header = (props) => {
             } else {
                 mobileMenu.style.display = 'none';
             }
-        })
+        });
 
         const responsiveMenu = () => {
             if (window.innerWidth < 768) {
@@ -119,7 +119,7 @@ const Header = (props) => {
                 </nav>
             </header>
         </React.Fragment>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

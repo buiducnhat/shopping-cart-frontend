@@ -57,13 +57,13 @@ const Checkout = props => {
                                                     <h3>{cartItem.name}</h3>
                                                 </div>
                                                 <div className='price'>
-                                                    <span>$ {cartItem.salePrice}</span>
+                                                    <span>$ {cartItem.salePrice || cartItem.price}</span>
                                                 </div>
                                                 <div className='quantity'>
                                                     <span>Quantity: {cartItem.quantity}</span>
                                                 </div>
                                                 <div className='cost'>
-                                                    <span>$ {cartItem.salePrice * cartItem.quantity}</span>
+                                                    <span>$ {(cartItem.salePrice || cartItem.price) * cartItem.quantity}</span>
                                                 </div>
                                             </div>
                                         </div>

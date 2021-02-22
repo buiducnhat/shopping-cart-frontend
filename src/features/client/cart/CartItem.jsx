@@ -18,7 +18,7 @@ const CartItem = props => {
             price,
             salePrice,
             quantity: newQuantity >= 1 ? newQuantity : 1,
-            subTotal: (newQuantity >= 1 ? newQuantity : 1) * salePrice
+            subTotal: (newQuantity >= 1 ? newQuantity : 1) * (salePrice || price)
         };
         dispatch(updateCart({product}))
     }
@@ -37,7 +37,7 @@ const CartItem = props => {
                 </div>
 
                 <div className='price'>
-                    <span>{`$ ${salePrice?.toLocaleString()}`}</span>
+                    <span>{`$ ${(salePrice || price)?.toLocaleString()}`}</span>
                 </div>
 
                 <div className='quantity'>
@@ -51,7 +51,7 @@ const CartItem = props => {
                 </div>
 
                 <div className='sub-total'>
-                    <span>{`$ ${(quantity * salePrice).toLocaleString()}`}</span>
+                    <span>{`$ ${(quantity * (salePrice || price)).toLocaleString()}`}</span>
                 </div>
 
                 <div className='remove-btn'>

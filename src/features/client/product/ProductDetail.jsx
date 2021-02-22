@@ -53,8 +53,14 @@ const ProductDetail = props => {
                             </div>
 
                             <div className='product-detail-price'>
-                                <span className='orignal-price'>{`$ ${price}`}</span>
-                                <span className='sale-price'>{`$ ${salePrice}`}</span>
+                            {
+                                salePrice ?
+                                    <React.Fragment>
+                                        <span className='old-price'>{`$ ${price}`}</span>
+                                        <span className='sale-price'>{`$ ${salePrice}`}</span>
+                                    </React.Fragment>
+                                    : <span className='orignal-price'>{`$ ${price}`}</span>
+                            }
                             </div>
 
                             <div className='product-detail-quantity'>
@@ -73,7 +79,7 @@ const ProductDetail = props => {
                                 }}>
                                     {
                                         isPendingAddToCart ?
-                                            <Loading size={30}/> :
+                                            <Loading size={30} /> :
                                             <React.Fragment>
                                                 <i className='fas fa-cart-plus'></i>
                                                 <span>Add to cart</span>
