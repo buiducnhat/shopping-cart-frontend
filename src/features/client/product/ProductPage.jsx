@@ -8,7 +8,7 @@ const ProductPage = props => {
 
     return (
         <Switch>
-            <Route path={listRouters.product} exact render={props => <ProductList {...props} />} />
+            <Route path={listRouters.product} render={props => <ProductList {...props} />} />
             <Route path={listRouters.productDetail} render={props => <ProductDetail {...props} />} />
         </Switch>
     );

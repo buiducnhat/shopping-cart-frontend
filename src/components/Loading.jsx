@@ -8,9 +8,9 @@ const Loading = ({size}) => {
     });
 
     return (
-        < section {...containerProps}>
+        <div {...containerProps}>
             {indicatorEl}
-        </section >
+        </div>
     );
 }
 

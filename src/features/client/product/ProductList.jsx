@@ -1,55 +1,122 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchListProducts} from './productSlice';
 import qs from 'qs';
 import Product from './Product';
 import LoadingScreen from '../../../components/LoadingScreen';
+import ReactPaginate from 'react-paginate';
+import './ProductList.css';
 
 const ProductList = (props) => {
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        let params = qs.parse(props.location.search, {ignoreQueryPrefix: true});
-        dispatch(fetchListProducts({pageNumber: params?.page, sortType: params?.sort}));
-    }, [dispatch, props.location.search]);
+    const [pageNumber, setPageNumber] = useState(1);
+    const [sortType, setSortType] = useState('des-update');
+    const [params, setParams] = useState(null);
 
     const productsList = useSelector(state => state.productSlice.products);
+    const total = useSelector(state => state.productSlice.total);
     const isPendingFetchListProducts = useSelector(state => state.productSlice.isPendingFetchListProducts);
+
+    useEffect(() => {
+        setParams(qs.parse(props.location.search, {ignoreQueryPrefix: true}));
+        setPageNumber(params?.page || 1);
+        setSortType(params?.sort || 'des-update');
+    }, [params?.page, params?.sort, props.location.search]);
+
+    useEffect(() => {
+        dispatch(fetchListProducts({pageNumber, sortType}));
+    }, [dispatch, pageNumber, sortType]);
 
     return (
         <section className='product-list'>
             <div className='container'>
-                <div className='row'>
-                    <div className='widget-title'>
-                        <div className='col'>
-                            <h2>
-                                <span>All products</span>
-                            </h2>
+                <div className='row widget-title'>
+                    <div className='col-6'>
+                        <h2>
+                            <span>All products</span>
+                        </h2>
+                    </div>
+                    <div className='col-6 btn-group sort-menu justify-content-end'>
+                        <button type='button' className='dropdown-toggle sort-btn' data-toggle='dropdown'
+                            aria-haspopup='true' aria-expanded='false'>
+                            {
+                                sortType === 'asc-price' ? 'Price ↑' :
+                                    sortType === 'des-price' ? 'Price ↓' :
+                                        sortType === 'asc-update' ? 'Newest ↑' : 'Newest ↓'
+                            }
+                        </button>
+                        <div className='dropdown-menu dropdown-menu-right'>
+                            <button className='dropdown-item' type='button'
+                                onClick={() => {
+                                    setSortType('asc-price');
+                                    dispatch(fetchListProducts({pageNumber, sortType}))
+                                }}
+                            >
+                                Price ↑
+                            </button>
+                            <button className='dropdown-item' type='button'
+                                onClick={() => {
+                                    setSortType('des-price');
+                                    dispatch(fetchListProducts({pageNumber, sortType}))
+                                }}
+                            >
+                                Price ↓
+                            </button>
+                            <button className='dropdown-item' type='button'
+                                onClick={() => {
+                                    setSortType('asc-update');
+                                    dispatch(fetchListProducts({pageNumber, sortType}))
+                                }}
+                            >
+                                Newest ↑
+                            </button>
+                            <button className='dropdown-item' type='button'
+                                onClick={() => {
+                                    setSortType('des-update');
+                                    dispatch(fetchListProducts({pageNumber, sortType}))
+                                }}
+                            >
+                                Newest ↓
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div className='row'>
+                <div className='row product-items'>
                     {
-                        (!isPendingFetchListProducts && productsList.length) ?
-                            productsList.map((product, index) =>
-                                <div className='col-lg-3 col-md-6'>
-                                    <Product
-                                        key={index}
-                                        props={props}
-                                        id={product._id}
-                                        name={product.name}
-                                        productImage={product.productImage}
-                                        price={product.price}
-                                        salePrice={product.salePrice}
-                                        description={product.description}
-                                    />
-                                </div>
-                            ) :
-                            <LoadingScreen />
+                        isPendingFetchListProducts ? <LoadingScreen /> :
+                            !productsList.length ? null :
+                                productsList.map((product, index) =>
+                                    <div className='col-lg-3 col-md-6'>
+                                        <Product
+                                            key={index}
+                                            props={props}
+                                            id={product._id}
+                                            name={product.name}
+                                            productImage={product.productImage}
+                                            orignalPrice={product.orignalPrice}
+                                            salePrice={product.salePrice}
+                                            currentPrice={product.currentPrice}
+                                            description={product.description}
+                                        />
+                                    </div>
+                                )
                     }
                 </div>
+                <ReactPaginate
+                    previousLabel={<i className='fas fa-angle-left'></i>}
+                    nextLabel={<i className='fas fa-angle-right'></i>}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={Math.ceil(total / 8)}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    containerClassName={'row pagination'}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={'active'}
+                    onPageChange={(data) => setPageNumber(data.selected + 1)}
+                />
             </div>
-        </section>
+        </section >
     )
 }
 

@@ -19,7 +19,7 @@ const ProductDetail = props => {
 
     const isLoggedIn = useSelector(state => state.authenticationSlice.isLoggedIn);
 
-    const {name, productImage, description, price, salePrice} = currentProduct;
+    const {name, productImage, description, orignalPrice, salePrice, currentPrice} = currentProduct;
 
     useEffect(() => {
         dispatch(fetchDetailProduct({productId}));
@@ -31,7 +31,7 @@ const ProductDetail = props => {
 
     return (
         isPendingFetchDetailProduct ? <LoadingScreen /> :
-            <div className='product-detail'>
+            <section className='product-detail'>
                 <div className='container'>
                     <div className='row'>
                         <div className='widget-title'>
@@ -42,7 +42,7 @@ const ProductDetail = props => {
                             </div>
                         </div>
                     </div>
-                    <div className='row row-main'>
+                    <div className='row'>
                         <div className='col-sm-6 product-detail-image'>
                             <img src={productImage} alt='product-detail' />
                         </div>
@@ -60,10 +60,10 @@ const ProductDetail = props => {
                                 {
                                     salePrice ?
                                         <React.Fragment>
-                                            <span className='old-price'>{`$ ${price}`}</span>
+                                            <span className='old-price'>{`$ ${orignalPrice}`}</span>
                                             <span className='sale-price'>{`$ ${salePrice}`}</span>
                                         </React.Fragment>
-                                        : <span className='orignal-price'>{`$ ${price}`}</span>
+                                        : <span className='orignal-price'>{`$ ${currentPrice}`}</span>
                                 }
                             </div>
 
@@ -96,7 +96,7 @@ const ProductDetail = props => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
     );
 }
 

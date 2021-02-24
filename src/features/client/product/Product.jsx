@@ -7,7 +7,7 @@ import Loading from '../../../components/Loading';
 import './Product.css'
 
 const Product = props => {
-    const {id, name, price, salePrice, productImage} = props;
+    const {id, name, orignalPrice, salePrice, currentPrice, productImage} = props;
     const dispatch = useDispatch();
     const isPendingAddToCart = useSelector(state => state.cartSlice.isPendingAddToCart);
     const isLoggedIn = useSelector(state => state.authenticationSlice.isLoggedIn);
@@ -29,7 +29,7 @@ const Product = props => {
                             (
                                 <React.Fragment>
                                     <div className='price orignal-price line-through'>
-                                        <span>{`$ ${price.toLocaleString()}`}</span>
+                                        <span>{`$ ${orignalPrice.toLocaleString()}`}</span>
                                     </div>
                                     <div className='price sale-price'>
                                         <span>{`$ ${salePrice.toLocaleString()}`}</span>
@@ -37,7 +37,7 @@ const Product = props => {
                                 </React.Fragment>
                             ) : (
                                 <div className='price orignal-price'>
-                                    <span>{`$ ${price.toLocaleString()}`}</span>
+                                    <span>{`$ ${currentPrice.toLocaleString()}`}</span>
                                 </div>
                             )
                     }

@@ -6,7 +6,7 @@ import listRouters from '../../../app/listRouters';
 import './CartItem.css';
 
 const CartItem = props => {
-    let {productId, productImage, name, price, salePrice, quantity} = props;
+    let {productId, productImage, name, currentPrice, quantity} = props;
     quantity = Number.parseInt(quantity);
     const dispatch = useDispatch();
 
@@ -15,10 +15,9 @@ const CartItem = props => {
             productId,
             productImage,
             name,
-            price,
-            salePrice,
+            currentPrice,
             quantity: newQuantity >= 1 ? newQuantity : 1,
-            subTotal: (newQuantity >= 1 ? newQuantity : 1) * (salePrice || price)
+            subTotal: (newQuantity >= 1 ? newQuantity : 1) * currentPrice
         };
         dispatch(updateCart({product}))
     }
@@ -37,7 +36,7 @@ const CartItem = props => {
                 </div>
 
                 <div className='price'>
-                    <span>{`$ ${(salePrice || price)?.toLocaleString()}`}</span>
+                    <span>{`$ ${currentPrice?.toLocaleString()}`}</span>
                 </div>
 
                 <div className='quantity'>
@@ -51,7 +50,7 @@ const CartItem = props => {
                 </div>
 
                 <div className='sub-total'>
-                    <span>{`$ ${(quantity * (salePrice || price)).toLocaleString()}`}</span>
+                    <span>{`$ ${(quantity * currentPrice).toLocaleString()}`}</span>
                 </div>
 
                 <div className='remove-btn'>

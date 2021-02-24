@@ -37,7 +37,7 @@ const Login = (props) => {
                             </div>
 
                             {
-                                isPendingLogin && <Loading size={50} />
+                                isPendingLogin && <Loading size={30} />
                             }
 
                             {

@@ -1,6 +1,6 @@
 .checkout-list .checkout-items {
     max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .checkout-list .checkout-item {

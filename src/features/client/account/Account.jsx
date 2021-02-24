@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {getUserData, logout} from '../../authentication/authenticationSlice';
 import {clearCart} from '../cart/cartSlice';
@@ -12,40 +12,44 @@ const AccountCpn = (props) => {
     return (
         <section className='account'>
             <div className='container'>
-                <div className="row account-profile">
+                <div className='row account-profile'>
 
-                    <div className="col-md-6 avatar">
+                    <div className='col-md-6 avatar'>
                         <img src={userData.avatar} alt='avatar' />
-                        <div className="logout">
+                        <div className='logout'>
                             <button onClick={() => {
                                 props.dispatch(clearCart());
                                 props.dispatch(logout());
                             }}>
-                                <i className="fas fa-sign-out-alt"></i>
+                                <i className='fas fa-sign-out-alt'></i>
                             </button>
                         </div>
                     </div>
 
-                    <div className="col-md-6 profile-detail">
-                        <div className="profile-detail-item name">
-                            <i className="fas fa-user"></i>
+                    <div className='col-md-6 profile-detail'>
+                        <div className='profile-detail-item name'>
+                            <i className='fas fa-user'></i>
                             <p>{userData.name}</p>
                         </div>
-                        <div className="profile-detail-item email">
-                            <i className="fas fa-envelope"></i>
+                        <div className='profile-detail-item email'>
+                            <i className='fas fa-envelope'></i>
                             <p>{userData.email}</p>
                         </div>
-                        <div className="profile-detail-item phone-number">
-                            <i className="fas fa-phone"></i>
+                        <div className='profile-detail-item phone-number'>
+                            <i className='fas fa-phone'></i>
                             <p>{userData.phoneNumber}</p>
                         </div>
-                        <div className="profile-detail-item address">
-                            <i className="fas fa-map-marker-alt"></i>
+                        <div className='profile-detail-item address'>
+                            <i className='fas fa-map-marker-alt'></i>
                             <p>{userData.address}</p>
                         </div>
-                        <div className="profile-detail-item join-time">
-                            <i className="fas fa-calendar-alt"></i>
+                        <div className='profile-detail-item join-time'>
+                            <i className='fas fa-calendar-alt'></i>
                             <p>{userData.createdAt.split('T')[0]}</p>
+                        </div>
+
+                        <div className='profile-detail-item order'>
+                            <Link to={{pathname: listRouters.order}}><i className='fas fa-wallet'></i>My Orders</Link>
                         </div>
                     </div>
                 </div>

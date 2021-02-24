@@ -1,0 +1,42 @@
+.product-list .sort-btn {
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.product-list .pagination {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.product-list .pagination li {
+    text-align: center;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.product-list .pagination li a {
+    padding: 0 0.5rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.product-list .pagination .active a {
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
+}
+
+.product-list .pagination li a i {
+    font-size: 1.5rem;
+}
+
+.product-list .pagination li:hover a {
+    color: var(--hover-color);
+}

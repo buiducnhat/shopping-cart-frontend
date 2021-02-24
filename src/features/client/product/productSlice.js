@@ -47,6 +47,7 @@ export const productSlice = createSlice({
     name: 'product',
     initialState: {
         products: [],
+        total: 0,
         isPendingFetchListProducts: true,
         fetchListProductsErrMsg: null,
 
@@ -71,7 +72,8 @@ export const productSlice = createSlice({
         [fetchListProducts.fulfilled]: (state, action) => {
             state.isPendingFetchListProducts = false;
             state.fetchListProductsErrMsg = null;
-            state.products = action.payload;
+            state.products = action.payload.data;
+            state.total = action.payload.total;
         },
 
         // handle fetchDetailProduct

@@ -2,6 +2,7 @@
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgb(100, 100, 100, 0.2);
+    width: 100%;
 }
 
 .cart-product-item .product-image img {
@@ -57,7 +58,7 @@
 .cart-product-item .remove-btn {
     position: absolute;
     top: 0;
-    right: 1rem;
+    right: 0;
 }
 
 .cart-product-item .remove-btn button {
@@ -73,7 +74,7 @@
 .cart-product-item .sub-total {
     position: absolute;
     bottom: 0;
-    right: 1rem;
+    right: 0;
 }
 
 .cart-product-item .sub-total span {

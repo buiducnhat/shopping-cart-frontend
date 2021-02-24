@@ -6,7 +6,7 @@ import listRouters from '../../../app/listRouters';
 import {completeOrder, cancelOrder} from './orderSlice';
 
 const ProductItem = props => {
-    const {productId, name, price, salePrice, productImage, quantity} = props;
+    const {productId, name, currentPrice, productImage, quantity} = props;
 
     return (
         <div className='row product-item'>
@@ -17,7 +17,7 @@ const ProductItem = props => {
                 <h3 className='name'>
                     <Link to={{pathname: `${listRouters.product}/${productId}`}}>{name}</Link>
                 </h3>
-                <span className='cost'>$ {salePrice?.toLocaleString() || price.toLocaleString()}</span>
+                <span className='cost'>$ {currentPrice.toLocaleString()}</span>
                 <span className='quantity'>x {quantity}</span>
             </div>
         </div>
@@ -42,30 +42,30 @@ const OrderItem = props => {
     return (
         <div className='container order-item'>
             <div className='row order-info'>
-                <div className='col-5 date row'>
-                    <span className='col-md-6'><i className='far fa-calendar-plus'></i> {createdAt.split('T')[0]}</span>
+                <div className='col-6 date row'>
+                    <span className='col-md-6'><i className='far fa-calendar-plus'></i>{createdAt.split('T')[0]}</span>
                     {
                         status === 'active' ?
-                            <span className={`col-md-6 ${status}`}><i className='far fa-calendar'></i> {updatedAt.split('T')[0]}</span>
+                            <span className={`col-md-6 ${status}`}><i className='far fa-calendar'></i>{updatedAt.split('T')[0]}</span>
                             : (
                                 status === 'completed' ?
                                     <span className={`col-md-6 ${status}`}>
-                                        <i className='far fa-calendar-check'></i> {updatedAt.split('T')[0]}
+                                        <i className='far fa-calendar-check'></i>{updatedAt.split('T')[0]}
                                     </span>
                                     : <span className={`col-md-6 ${status}`}>
-                                        <i className='far fa-calendar-times'></i> {updatedAt.split('T')[0]}
+                                        <i className='far fa-calendar-times'></i>{updatedAt.split('T')[0]}
                                     </span>
                             )
                     }
                 </div>
-                <div className='col-2 cost'>
+                <div className='col-3 cost'>
                     <span>$ {total}</span>
                 </div>
                 <div className='col-2 status'>
                     <span className={`${status}`}>{status.replace(status.charAt(0), status.charAt(0).toUpperCase())}</span>
                 </div>
 
-                <div className='col-3 text-right option'>
+                <div className='col-1 text-right option'>
                     {
                         (isPendingCompleteOrder || isPendingCancelOrder) ?
                             <Loading size={30} /> :
@@ -99,6 +99,7 @@ const OrderItem = props => {
                             name={item.name}
                             price={item.price}
                             salePrice={item.salePrice}
+                            currentPrice={item.currentPrice}
                             productImage={item.productImage}
                             quantity={item.quantity}
                         />

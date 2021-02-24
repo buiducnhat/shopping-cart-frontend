@@ -1,11 +1,15 @@
 import React, {useEffect} from 'react';
-import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {setActiveLink} from '../features/client/link/linkSlice';
 import listRouters from '../app/listRouters';
 import './Header.css';
 
 const Header = (props) => {
+    const dispatch = useDispatch();
+
     const totalCartCost = useSelector(state => state.cartSlice.total);
+    const activeLink = useSelector(state => state.linkSlice.activeLink);
 
     const script = () => {
         const body = document.body;
@@ -35,6 +39,7 @@ const Header = (props) => {
         body.onresize = () => responsiveMenu();
     }
     useEffect(script, []);
+    useEffect(() => dispatch(setActiveLink(window.location.pathname)), [dispatch, window.location.pathname]);
 
     return (
         <React.Fragment>
@@ -89,14 +94,11 @@ const Header = (props) => {
                         <div className='row'>
                             <div className='col-md-12'>
                                 <ul id='desktop-menu' className='desktop-menu'>
-                                    <li className='desktop-menu-item active'>
+                                    <li className={`desktop-menu-item ${activeLink === listRouters.home ? 'active' : ''}`}>
                                         <Link to={{pathname: listRouters.home}}>Home</Link>
                                     </li>
-                                    <li className='desktop-menu-item'>
+                                    <li className={`desktop-menu-item ${activeLink === listRouters.product ? 'active' : ''}`}>
                                         <Link to={{pathname: listRouters.product}}>Shop</Link>
-                                    </li>
-                                    <li className='desktop-menu-item'>
-                                        <Link to={{pathname: listRouters.order}}>Contact</Link>
                                     </li>
                                 </ul>
                                 <button id='mobile-menu-trigger' className='mobile-menu-trigger' style={{display: 'none'}}>
@@ -108,9 +110,6 @@ const Header = (props) => {
                                     </li>
                                     <li className='mobile-menu-item'>
                                         <Link to={{pathname: listRouters.product}}>Shop</Link>
-                                    </li>
-                                    <li className='mobile-menu-item'>
-                                        <Link to={{pathname: listRouters.home}}>Contact</Link>
                                     </li>
                                 </ul>
                             </div>

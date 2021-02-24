@@ -21,9 +21,9 @@ const Checkout = props => {
 
     if (orderSuccessfully) {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col text-center mt-5">
+            <div className='container'>
+                <div className='row'>
+                    <div className='col text-center mt-5'>
                         <SuccessCpn title='Successfully' content='Your order is created!' />
                     </div>
                 </div>
@@ -57,13 +57,13 @@ const Checkout = props => {
                                                     <h3>{cartItem.name}</h3>
                                                 </div>
                                                 <div className='price'>
-                                                    <span>$ {cartItem.salePrice || cartItem.price}</span>
+                                                    <span>$ {cartItem.currentPrice?.toLocaleString()}</span>
                                                 </div>
                                                 <div className='quantity'>
                                                     <span>Quantity: {cartItem.quantity}</span>
                                                 </div>
                                                 <div className='cost'>
-                                                    <span>$ {(cartItem.salePrice || cartItem.price) * cartItem.quantity}</span>
+                                                    <span>$ {(cartItem.currentPrice * cartItem.quantity).toLocaleString()}</span>
                                                 </div>
                                             </div>
                                         </div>

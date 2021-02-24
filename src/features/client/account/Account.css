@@ -14,7 +14,7 @@
 }
 
 .account-profile .avatar .logout {
-    padding: 20px;
+    padding: 1rem;
 }
 
 .account-profile .avatar .logout button {
@@ -25,13 +25,13 @@
 }
 
 .account-profile .avatar .logout button i {
-    font-size: 20px;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-size: 2rem;
+    transition: ease-in-out 0.25s;
 }
 
 .account-profile .avatar .logout button i:hover {
     color: var(--hover-color);
-    font-size: 22px;
+    transform: scale(0.8);
 }
 
 .account-profile .profile-detail {
@@ -46,12 +46,13 @@
 }
 
 .account-profile .profile-detail .profile-detail-item i {
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    width: 2rem;
 }
 
 .account-profile .profile-detail .profile-detail-item p {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
 }
@@ -60,4 +61,17 @@
     color: var(--hover-color);
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.account-profile .profile-detail .order a {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    background: var(--theme-color);
+    padding: 1rem;
+}
+
+.account-profile .profile-detail .order a:hover {
+    background: var(--hover-color);
 }

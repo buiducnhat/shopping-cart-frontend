@@ -13,6 +13,7 @@ export const getOrdersOfUser = createAsyncThunk('order/getOrdersOfUser', (params
             });
             return resolve(response.data);
         } catch (error) {
+            console.log(error);
             if (error.response) {
                 return reject(rejectWithValue(error.response.data));
             }
@@ -32,11 +33,13 @@ export const createOrder = createAsyncThunk('order/createOrder', ({name, phoneNu
                 address
             }, {
                 headers: {
-                    'Authorization': 'Bearer ' + accessToken
-                }
+                    'Authorization': 'Bearer ' + accessToken,
+                    'Content-Type': 'application/json'
+                },
             });
             return resolve(response.data);
         } catch (error) {
+            console.log(error);
             if (error.response) {
                 return reject(rejectWithValue(error.response.data));
             }

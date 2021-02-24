@@ -36,7 +36,7 @@ const Cart = () => {
                             <div className='cart-save'>
                                 <button onClick={() => dispatch(saveCart({newItems: cartItems}))}>
                                     {
-                                        isPendingSaveCart ? <Loading size={30} />
+                                        isPendingSaveCart ? <Loading size={15} />
                                             : (
                                                 <React.Fragment><i className='far fa-save'></i>Save</ React.Fragment>
                                             )
@@ -56,18 +56,15 @@ const Cart = () => {
                                                     description={cartItem.description}
                                                     productImage={cartItem.productImage}
                                                     name={cartItem.name}
-                                                    price={cartItem.price}
-                                                    salePrice={cartItem.salePrice}
+                                                    currentPrice={cartItem.currentPrice}
                                                     quantity={cartItem.quantity}
                                                 />
                                             )
                                         }
                                     </div>
-                                    <div className="row cart-checkout">
+                                    <div className='row cart-checkout'>
                                         <span>Total: <span>${cartTotal}</span></span>
-                                        <button>
-                                            <Link to={{pathname: listRouters.checkout}}>Checkout</Link>
-                                        </button>
+                                        <Link to={{pathname: listRouters.checkout}}>Checkout</Link>
                                     </div>
                                 </React.Fragment>
                                 :

@@ -61,7 +61,7 @@ const SignUp = props => {
                             </div>
 
                             {
-                                isPendingSignUp && <Loading size={50}/>
+                                isPendingSignUp && <Loading size={30}/>
                             }
 
                             {

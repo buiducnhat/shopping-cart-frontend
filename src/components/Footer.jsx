@@ -7,7 +7,7 @@ const Footer = (props) => {
     return (
         <footer className='footer'>
             <div className='container'>
-                <div className='row pt-3 mb-3 text-center d-flex justify-content-center link'>
+                <div className='row pt-4 pb-3 text-center d-flex justify-content-center link'>
                     <div className='col-md'>
                         <h6 className='link-title'>
                             <Link to={{pathname: listRouters.login}}>Sign in</Link>

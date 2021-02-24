@@ -21,9 +21,9 @@
 }
 
 .cart-items {
-    padding: 15px;
+    padding: 0 1rem;
     max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -32,26 +32,22 @@
     position: relative;
 }
 
-.cart-checkout button {
+.cart-checkout a {
+    text-align: center;
     padding: 10px;
     width: 200px;
     background: var(--theme-color);
-    border: none;
     box-shadow: 1px 1px 5px 0px rgba(100, 100, 100);
     font-size: 1.2rem;
-    cursor: pointer;
     position: absolute;
     right: 1rem;
     bottom: 0;
-}
-
-.cart-checkout button a {
     color: #fff;
     font-weight: 500;
     text-transform: uppercase;
 }
 
-.cart-checkout button:hover {
+.cart-checkout a:hover {
     background: var(--hover-color);
 }
 
