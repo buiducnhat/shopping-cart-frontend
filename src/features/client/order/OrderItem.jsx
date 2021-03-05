@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import Loading from '../../../components/Loading';
+import Loading from '../../../components/Loading/Loading';
 import {Link} from 'react-router-dom';
 import listRouters from '../../../app/listRouters';
 import {completeOrder, cancelOrder} from './orderSlice';

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import LoadingScreen from '../../../components/LoadingScreen';
+import LoadingScreen from '../../../components/Loading/LoadingScreen';
 import {Redirect} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import OrderItem from './OrderItem';

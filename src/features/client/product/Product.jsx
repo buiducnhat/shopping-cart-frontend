@@ -3,7 +3,7 @@ import {Link, Redirect} from 'react-router-dom';
 import listRouters from '../../../app/listRouters';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../cart/cartSlice';
-import Loading from '../../../components/Loading';
+import Loading from '../../../components/Loading/Loading';
 import './Product.css'
 
 const Product = props => {

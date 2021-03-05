@@ -10,6 +10,25 @@ export const fetchListProducts = createAsyncThunk('products/fetchListProducts', 
             let url = `${serverUrl}/products/?page=${pageNumber}&sort=${sortType}`;
 
             let result = await axios.get(url);
+            return resolve(result.data);
+        } catch (error) {
+            if (error.response) {
+                console.log(error.response)
+                return reject(rejectWithValue(error.response.data));
+            }
+            return reject(error);
+        }
+    });
+});
+
+export const fetchListProductsByCategory = createAsyncThunk('products/fetchListProductsByCategory', (params, {rejectWithValue}) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const serverUrl = process.env.REACT_APP_SERVER_URL;
+            const {pageNumber, sortType, categoryName} = params;
+            const url = `${serverUrl}/products/category/${categoryName}/?page=${pageNumber}&sort=${sortType}`;
+
+            const result = await axios.get(url);
 
             return resolve(result.data);
         } catch (error) {
@@ -43,17 +62,40 @@ export const fetchDetailProduct = createAsyncThunk('products/fetchDetailProduct'
     });
 });
 
+export const fetchListCategories = createAsyncThunk('products/fetchListCategories', (params, {rejectWithValue}) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const serverUrl = process.env.REACT_APP_SERVER_URL;
+            let url = `${serverUrl}/categories`;
+
+            const response = await axios.get(url);
+
+            return resolve(response.data);
+        } catch (error) {
+            if (error.response) {
+                console.log(error.response)
+                return reject(rejectWithValue(error.response.data));
+            }
+            return reject(error);
+        }
+    });
+});
+
 export const productSlice = createSlice({
     name: 'product',
     initialState: {
         products: [],
         total: 0,
-        isPendingFetchListProducts: true,
+        isPendingFetchListProducts: false,
         fetchListProductsErrMsg: null,
 
         currentProduct: {},
         isPendingFetchDetailProduct: false,
-        fetchDetailProductErrMsg: null
+        fetchDetailProductErrMsg: null,
+
+        categories: [],
+        isPendingFetchListCategories: false,
+        fetchListCategoriesErrMsg: null
     },
     reducers: {
         setCurrentProduct(state, action) {
@@ -88,7 +130,36 @@ export const productSlice = createSlice({
             state.fetchDetailProductErrMsg = null;
             state.isPendingFetchDetailProduct = false;
             state.currentProduct = action.payload;
-        }
+        },
+
+        // handle fetchListProductsByCategory
+        [fetchListProductsByCategory.rejected]: (state, action) => {
+            state.isPendingFetchListProducts = false;
+            state.fetchListCategoriesErrMsg = action.error?.message || action.payload?.message;
+        },
+        [fetchListProductsByCategory.pending]: (state) => {
+            state.isPendingFetchListProducts = true;
+        },
+        [fetchListProductsByCategory.fulfilled]: (state, action) => {
+            state.isPendingFetchListProducts = false;
+            state.fetchListProductsErrMsg = null;
+            state.products = action.payload.data;
+            state.total = action.payload.total;
+        },
+
+        // handle fetchListCategories
+        [fetchListCategories.rejected]: (state, action) => {
+            state.isPendingFetchListCategories = false;
+            state.fetchListCategoriesErrMsg = action.error?.message || action.payload?.message;
+        },
+        [fetchListCategories.pending]: (state) => {
+            state.isPendingFetchListCategories = true;
+        },
+        [fetchListCategories.fulfilled]: (state, action) => {
+            state.isPendingFetchListCategories = false;
+            state.fetchListCategoriesErrMsg = null;
+            state.categories = action.payload;
+        },
     }
 });
 

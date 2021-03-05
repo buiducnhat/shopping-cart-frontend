@@ -10,6 +10,8 @@ module.exports = {
 
     product: '/products',
     productDetail: '/products/:productId',
+    productCategory: '/products/category',
+    productCategoryName: '/products/category/:categoryName',
 
     cart: '/carts',
     checkout: '/checkout',

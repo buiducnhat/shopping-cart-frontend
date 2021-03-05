@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchListProducts} from './productSlice';
+import {fetchListProducts, fetchListProductsByCategory, fetchListCategories} from './productSlice';
 import qs from 'qs';
 import Product from './Product';
-import LoadingScreen from '../../../components/LoadingScreen';
+import LoadingScreen from '../../../components/Loading/LoadingScreen';
 import ReactPaginate from 'react-paginate';
 import './ProductList.css';
+import Category from '../../../components/Category/Category';
 
 const ProductList = (props) => {
     const dispatch = useDispatch();
@@ -16,6 +17,12 @@ const ProductList = (props) => {
     const productsList = useSelector(state => state.productSlice.products);
     const total = useSelector(state => state.productSlice.total);
     const isPendingFetchListProducts = useSelector(state => state.productSlice.isPendingFetchListProducts);
+    const categories = useSelector(state => state.productSlice.categories);
+    const isPendingFetchListCategories = useSelector(state => state.productSlice.isPendingFetchListCategories);
+
+    useEffect(() => {
+        dispatch(fetchListCategories());
+    }, [dispatch])
 
     useEffect(() => {
         setParams(qs.parse(props.location.search, {ignoreQueryPrefix: true}));
@@ -24,8 +31,12 @@ const ProductList = (props) => {
     }, [params?.page, params?.sort, props.location.search]);
 
     useEffect(() => {
-        dispatch(fetchListProducts({pageNumber, sortType}));
-    }, [dispatch, pageNumber, sortType]);
+        if (props.type === 'category') {
+            dispatch(fetchListProductsByCategory({pageNumber, sortType, categoryName: props.match.params.categoryName}));
+        } else {
+            dispatch(fetchListProducts({pageNumber, sortType}));
+        }
+    }, [dispatch, props.type, pageNumber, sortType, props.match.params.categoryName]);
 
     return (
         <section className='product-list'>
@@ -81,6 +92,11 @@ const ProductList = (props) => {
                         </div>
                     </div>
                 </div>
+                {
+                    !isPendingFetchListCategories && categories.length && (
+                        <Category category={props.match.params.categoryName} />
+                    )
+                }
                 <div className='row product-items'>
                     {
                         isPendingFetchListProducts ? <LoadingScreen /> :

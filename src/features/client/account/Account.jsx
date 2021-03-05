@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getUserData, logout} from '../../authentication/authenticationSlice';
 import {clearCart} from '../cart/cartSlice';
 import listRouters from '../../../app/listRouters';
-import LoadingScreen from '../../../components/LoadingScreen'
+import LoadingScreen from '../../../components/Loading/LoadingScreen'
 import './Account.css';
 
 const AccountCpn = (props) => {

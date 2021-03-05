@@ -8,8 +8,8 @@ import Order from './features/client/order/Order';
 import Account from './features/client/account/Account';
 import Login from './features/authentication/Login';
 import SignUp from './features/authentication/SignUp';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import listRouters from './app/listRouters';
 
 const Client = props => {
@@ -17,8 +17,9 @@ const Client = props => {
         <React.Fragment>
             <Header />
             <Switch>
-                <Route path={listRouters.productDetail} render={props => <ProductDetail {...props} />} />
-                <Route path={listRouters.product} render={props => <ProductList {...props} />} />
+                <Route path={listRouters.productDetail} exact render={props => <ProductDetail {...props} />} />
+                <Route path={listRouters.product} exact render={props => <ProductList {...props} type={'default'} />} />
+                <Route path={listRouters.productCategoryName} exact render={props => <ProductList {...props} type={'category'} />} />
                 <Route path={listRouters.home} render={props => <ProductList {...props} />} />
                 <Route path={listRouters.account} render={props => <Account {...props} />} />
                 <Route path={listRouters.login} render={props => <Login {...props} />} />

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {createOrder} from '../order/orderSlice';
 import {clearCart} from '../cart/cartSlice';
-import Loading from '../../../components/Loading';
-import SuccessCpn from '../../../components/SuccessCpn';
+import Loading from '../../../components/Loading/Loading';
+import SuccessCpn from '../../../components/Success/SuccessCpn';
 import './Checkout.css';
 
 const Checkout = props => {

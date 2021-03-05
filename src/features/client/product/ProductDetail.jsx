@@ -3,8 +3,8 @@ import {Redirect} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchDetailProduct} from './productSlice';
 import {addToCart} from '../cart/cartSlice';
-import Loading from '../../../components/Loading';
-import LoadingScreen from '../../../components/LoadingScreen';
+import Loading from '../../../components/Loading/Loading';
+import LoadingScreen from '../../../components/Loading/LoadingScreen';
 import listRouters from '../../../app/listRouters';
 import './ProductDetail.css';
 

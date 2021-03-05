@@ -6,8 +6,8 @@ import {getCart, saveCart} from './cartSlice';
 import CartItem from './CartItem';
 import listRouters from '../../../app/listRouters';
 import './Cart.css';
-import LoadingScreen from '../../../components/LoadingScreen';
-import Loading from '../../../components/Loading';
+import LoadingScreen from '../../../components/Loading/LoadingScreen';
+import Loading from '../../../components/Loading/Loading';
 
 const Cart = () => {
     const dispatch = useDispatch();
